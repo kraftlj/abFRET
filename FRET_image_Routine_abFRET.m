@@ -10,10 +10,10 @@ mkdir(fullfile(location,'SaveFolder')); %Make a new SaveFolder
 %% Image importing
 %This catalogs all of the .lsm files in the location directory
 wb=waitbar(0,'Overall Time Left'); %This initializes a waitbar
-% savedata = cell(length(files),5);
-% for index = 1:length(files); %This goes through the image files one by one
-savedata = cell(2,5);
-for index = 1:2; %This goes through the image files one by one
+savedata = cell(length(files),5);
+for index = 1:length(files); %This goes through the image files one by one
+% savedata = cell(2,5);
+% for index = 1:2; %This goes through the image files one by one
     wb=waitbar(index./length(files),wb); %This updates the waitbar each time it moves to the next image file
     clearvars('-except','savedata','location','files','fid','index','wb')
     data=bfopen(fullfile(location,files(index).name));
