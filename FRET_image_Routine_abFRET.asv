@@ -1,3 +1,39 @@
+%%% Automated analysis of acceptor photobleaching
+%%
+%      Copyright (C) 2014  Lewis J. Kraft
+%
+%     This program is free software: you can redistribute it and/or modify
+%     it under the terms of the GNU General Public License as published by
+%     the Free Software Foundation, either version 3 of the License, or (at
+%     your option) any later version.
+%
+%     This program is distributed in the hope that it will be useful, but
+%     WITHOUT ANY WARRANTY; without even the implied warranty of
+%     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+%     General Public License for more details.
+%
+%     You should have received a copy of the GNU General Public License
+%     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+%
+% Running the script launches the LC3 localization script.  It will
+% prompt the user for the location of directory harboring the imaging
+% files.  The script assumes there is a CFP channel with Cerulean as a
+% control, the YFP channel is Venus-LC3, and the FarRed channel is a DRAQ5
+% nuclear label.
+%
+%
+%% This is a script to analyze the cell imaging data
+%Inputs are images of cells, and images of nuclei.
+%Outputs are:
+% Number of nuclei;
+% Number of spots per nucleus;
+% Number of spots per cytoplasm;
+% ratio of nuclear spot to nucleoplasm intensity
+% ratio of cytoplasmic spot to cytoplasm intensity
+% ratio of nuclear to cytoplasmic intensity
 %% Begin
 clear all; close all; clc;
 tic %start the clock
@@ -11,7 +47,7 @@ mkdir(fullfile(location,'SaveFolder')); %Make a new SaveFolder
 %This catalogs all of the .lsm files in the location directory
 wb=waitbar(0,'Overall Time Left'); %This initializes a waitbar
 savedata = cell(length(files),5);
-for index = 93:length(files); %This goes through the image files one by one
+for index = 1:length(files); %This goes through the image files one by one
     % savedata = cell(2,5);
     % for index = 1:2; %This goes through the image files one by one
     wb=waitbar(index./length(files),wb); %This updates the waitbar each time it moves to the next image file
